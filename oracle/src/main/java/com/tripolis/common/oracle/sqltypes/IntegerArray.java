@@ -28,7 +28,7 @@ public class IntegerArray implements SqlTypeValue, Serializable  {
 
         public void setTypeValue(PreparedStatement cs, int index, int sqlType, String typeName) throws SQLException {
             Connection con =  new CommonsDbcpNativeJdbcExtractor().getNativeConnection(cs.getConnection());
-            ArrayDescriptor des = ArrayDescriptor.createDescriptor(getTypename(), con);
+            ArrayDescriptor des = ArrayDescriptor.createDescriptor(con.getSchema() + "." + getTypename(), con);
             ARRAY a = new ARRAY(des, con, entityIds);
             cs.setObject(index, (Object)a);
         }
