@@ -4,21 +4,6 @@
   <artifactId>parent</artifactId>
   <packaging>pom</packaging>
   <version>0.0.1-SNAPSHOT</version>
-	<profiles>
-		<profile>
-			<id>test</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<db.url>jdbc:oracle:thin:@192.168.56.101:1521:orcl</db.url>
-				<db.username>DIALOGUE</db.username>
-				<db.password>DIALOGUE</db.password>
-				<db.admin.username>system</db.admin.username>
-				<db.admin.password>oracle</db.admin.password>
-			</properties>
-		</profile>
-	</profiles>
 	<properties>
 		<org.springframework.version>3.2.8.RELEASE</org.springframework.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,6 +31,11 @@
 	</build>
 	<dependencyManagement>
 		<dependencies>
+			<dependency>
+				<groupId>com.tripolis.common</groupId>
+				<artifactId>oracle</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-jdbc</artifactId>
